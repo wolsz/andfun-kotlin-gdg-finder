@@ -41,6 +41,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -55,7 +59,7 @@ dependencies {
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
     // Use viewModelScope from lifecycle-viewmodel-ktx
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0-alpha03"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-rc01'
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$version_navigation"
@@ -83,7 +87,7 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$version_glide"
 
     // RecyclerView
-    implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
+    implementation "androidx.recyclerview:recyclerview:${version_recyclerview}"
 
     // Material design components
     implementation "com.google.android.material:material:$version_material"
