@@ -6,9 +6,14 @@
 
 <!-- TODO (09) Add checkedIconVisible=true so the Chip will show a checkmark when it’s selected. -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<com.google.android.material.chip.Chip xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.MaterialComponents.Chip.Choice"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:checkedIconVisible="true"
+    tools:checked="true"
+    app:chipBackgroundColor="@color/selected_highlight">
 
-</LinearLayout>
+</com.google.android.material.chip.Chip>

@@ -15,6 +15,8 @@ import com.example.android.gdgfinder.databinding.FragmentGdgListBinding
 import com.google.android.gms.location.*
 import com.google.android.material.snackbar.Snackbar
 import com.example.android.gdgfinder.R
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 
 private const val LOCATION_PERMISSION_REQUEST = 1
 
@@ -60,6 +62,30 @@ class GdgListFragment : Fragment() {
 
         // TODO (04) Create an observer on viewModel.regionList. Override the required
         // onChanged() method to include the following changes.
+        viewModel.regionList.observe(viewLifecycleOwner, object: Observer<List<String>> {
+            override fun onChanged(data: List<String>?) {
+                data ?: return
+
+                val chipGroup = binding.regionsList
+                val inflator = LayoutInflater.from(chipGroup.context)
+
+                val children: List<Chip> = data.map { regionName ->
+                    val chip = inflator.inflate(R.layout.region, chipGroup, false) as Chip
+                    chip.text = regionName
+                    chip.tag = regionName
+                    chip.setOnCheckedChangeListener { button, isChecked ->
+                        viewModel.onFilterChanged(button.tag as String, isChecked)
+                    }
+                    chip
+                }
+
+                chipGroup.removeAllViews()
+
+                for (chip: Chip in children) {
+                    chipGroup.addView(chip)
+                }
+            }
+        })
 
         // TODO (05) Create a new layoutInflator from the ChipGroup.
 
